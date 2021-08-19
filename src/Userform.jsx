@@ -27,7 +27,7 @@ class UsersForm extends Component {
     this.props.addNewUser(this.state);
 
     this.setState(
-      (this.state = {
+      (this.setState = {
         name: "",
         email: "",
         number: "",
