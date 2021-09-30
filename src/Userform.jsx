@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./userform.css";
 
-import { addUser } from "./Useraction";
+import { addUser, getAllusers } from "./Useraction";
 import { connect } from "react-redux";
 
 class UsersForm extends Component {
@@ -37,56 +37,59 @@ class UsersForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="classForm-section">
-        <label htmlFor="">
-          <h1 className="forms">FORMS</h1> Name :
-          <input
-            type="text"
-            value={this.state.name}
-            name="name"
-            onChange={this.handleChange}
-            required="required"
-          />
-        </label>
-        <br />
-        <br />
+      <div className="bk">
+        <form onSubmit={this.handleSubmit} className="classForm-section">
+          <label htmlFor="">
+            <h1 className="forms">FORMS</h1> Name :
+            <input
+              type="text"
+              value={this.state.name}
+              name="name"
+              onChange={this.handleChange}
+              required="required"
+            />
+          </label>
+          <br />
+          <br />
 
-        <label htmlFor="">
-          {" "}
-          Email :
-          <input
-            type="email"
-            value={this.state.email}
-            name="email"
-            onChange={this.handleChange}
-            required="required"
-          />
-        </label>
-        <br />
-        <br />
+          <label htmlFor="">
+            {" "}
+            Email :
+            <input
+              type="email"
+              value={this.state.email}
+              name="email"
+              onChange={this.handleChange}
+              required="required"
+            />
+          </label>
+          <br />
+          <br />
 
-        <label htmlFor="">
-          {" "}
-          Number :
-          <input
-            type="number"
-            value={this.state.number}
-            name="number"
-            onChange={this.handleChange}
-            required="required"
-          />
-        </label>
-        <br />
-        <br />
+          <label htmlFor="">
+            {" "}
+            Number :
+            <input
+              type="number"
+              value={this.state.number}
+              name="number"
+              onChange={this.handleChange}
+              required="required"
+            />
+          </label>
+          <br />
+          <br />
 
-        <input className="submit-btn " type="submit" />
-      </form>
+          <input className="submit-btn " type="submit" />
+        </form>
+      </div>
     );
   }
 }
 
 const mapDispatchToProps = {
   addNewUser: addUser,
+  getAllusers: getAllusers,
 };
 
 export default connect(null, mapDispatchToProps)(UsersForm);

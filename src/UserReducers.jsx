@@ -1,21 +1,4 @@
-// const initialState = {
-//   users: [],
-// };
-
-// const usersReducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case "ADD_USER":
-//       return { ...state.users, users: [...state.users, action.payload] };
-
-//     default:
-//       return state;
-//   }
-// };
-
-// export default usersReducer;
-
-// The reducer is a function that akes a state and action and updates the store with the updated state based
-// on the action.
+import { ADD_USER, DELETE_USER, EDIT_USER } from "./Useraction";
 
 const initialState = {
   users: [],
@@ -23,35 +6,57 @@ const initialState = {
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_USER":
+    case ADD_USER:
       return { ...state.users, users: [...state.users, action.payload] };
-
-    case "EDIT_USER":
-      const updatedUser = state.users.map((each_user) => {
-        if (each_user.id === action.user_id) {
-          return { ...each_user, ...action.updatedUser };
-        } else {
-          return each_user;
-        }
+    case DELETE_USER:
+      const savedUsers = state.users.filter((user) => {
+        return user.id !== action.payload;
       });
-      return { ...state, users: updatedUser };
+      return { ...state, users: savedUsers };
+    case EDIT_USER:
+      return {
+        ...state,
+        users: state.users.map((user) =>
+          user.id === action.payload.id ? action.payload : user
+        ),
+      };
 
-    case "DELETE_USER":
-      let notDeletedUsers = state.users.filter((each_item_in_array) => {
-        // console.log(each_item_in_array.id)
-        // console.log(action.payload)
-        // console.log(each_item_in_array.id !== action.payload)
-        return each_item_in_array.id !== action.payload;
-      });
-
-      return { users: notDeletedUsers };
-
+    case "SET_ALL_USERS":
+      return { ...state, users: action.payload };
     default:
       return state;
   }
 };
 
-export default usersReducer;
+// const userReducer = (state = initialState, action) => {
+//   switch (action.type) {
+//     case "ADD_USER":
+//       return { ...state.user, user: [...state.user, action.payload] };
 
-// The reducer is a function that akes a state and action and updates the store with the updated state based
-// on the action.
+//     case "EDIT_USER":
+//       const updatedUser = state.user.map((each_user) => {
+//         if (each_user.id === action.user_id) {
+//           return { ...each_user, ...action.updatedUser };
+//         } else {
+//           return each_user;
+//         }
+//       });
+//       return { ...state, user: updatedUser };
+
+//     case "DELETE_USER":
+//       let notDeletedUser = state.user.filter((each_item_in_array) => {
+//         return each_item_in_array.id !== action.payload;
+//       });
+
+//       return { user: notDeletedUser };
+
+//     case "SET_ALL_USERS":
+//       console.log(action.payload);
+//       return { ...state, users: action.payload };
+
+//     default:
+//       return state;
+//   }
+// };
+
+export default usersReducer;
