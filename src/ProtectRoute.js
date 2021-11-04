@@ -1,7 +1,7 @@
 import { auth } from "firebase";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Route, Redirect } from "react-router";
+import { Route, Redirect } from "react-router-dom";
 import Router from "./router";
 
 function Protectroute({ component: Component, auth, ...rest }) {
