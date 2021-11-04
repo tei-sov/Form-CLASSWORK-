@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, createStore, combineReducers } from "redux";
 import usersReducer from "./UserReducers";
-import { firestore } from "firebase";
+
 import { firebaseReducer } from "react-redux-firebase";
 import { firestoreReducer } from "redux-firestore";
 import thunk from "redux-thunk";

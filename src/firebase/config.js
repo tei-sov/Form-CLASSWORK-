@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import "firebase/app";
 
 // Import the functions you need from the SDKs you need
 
